@@ -1,0 +1,4 @@
+services:
+    Pipirima\PimcoreCsvExportColumnsBundle\EventListener\CsvExportListener:
+        tags:
+            - { name: kernel.event_listener, event: pimcore.dataobject.postCsvItemExport, method: onPostCsvItemExport }

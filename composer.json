@@ -1,0 +1,38 @@
+{
+  "name": "pipirima/pimcore-csv-export-columns",
+  "type": "pimcore-bundle",
+  "license": "GPL-3.0-or-later",
+  "description": "PimcoreCsvExportColumns allows prettifying CSV export columns.",
+  "keywords": [
+    "pimcore",
+    "observer",
+    "events",
+    "pimcore-plugin",
+    "pimcore-bundle"
+  ],
+  "homepage": "https://github.com/pipirima/PimcoreCsvExportColumns",
+  "authors": [
+    {
+      "name": "Wojciech Peisert",
+      "email": "info@sauron.pl",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "pimcore/pimcore": "^6"
+  },
+  "autoload": {
+    "psr-4": {
+      "Pipirima\\PimcoreCsvExportColumnsBundle\\": "src/PimcoreCsvExportColumnsBundle"
+    }
+  },
+  "extra": {
+    "pimcore": {
+      "bundles": [
+        "Pipirima\\PimcoreCsvExportColumnsBundle\\PimcoreCsvExportColumnsBundle"
+      ]
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
