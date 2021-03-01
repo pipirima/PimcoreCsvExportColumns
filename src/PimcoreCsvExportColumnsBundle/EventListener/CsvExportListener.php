@@ -50,13 +50,30 @@ class CsvExportListener
         $origObjectData = $event->getArgument('objectData');
         $newObjectData = [];
         foreach ($origObjectData as $key => $value) {
-            $key = $this->removeClassificationStorePrefixes($key);
-            $key = $this->translate($key, $requestedLanguage);
-            $key = $this->addPrefix($key);
-            $newObjectData[$key] = $value;
+            $newKey = $this->adjustColumnName($key, $requestedLanguage);
+            $newObjectData[$newKey] = $value;
         }
 
         $event->setArgument('objectData', $newObjectData);
+    }
+
+    /**
+     * @param string $colName
+     * @param string $requestedLanguage
+     * @return string
+     */
+    private function adjustColumnName(string $colName, string $requestedLanguage): string
+    {
+        $name = $colName;
+        $name = $this->removeClassificationStorePrefixes($name);
+        $name = $this->translate($name, $requestedLanguage);
+        $name = trim($name);
+        if (!$name) {
+            $name = $colName;
+        }
+        $name = $this->addPrefix($name);
+
+        return $name;
     }
 
     /**
