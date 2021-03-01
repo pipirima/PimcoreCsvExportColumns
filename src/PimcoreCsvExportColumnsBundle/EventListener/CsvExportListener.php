@@ -62,15 +62,10 @@ class CsvExportListener
      * @param string $requestedLanguage
      * @return string
      */
-    private function adjustColumnName(string $colName, string $requestedLanguage): string
+    private function adjustColumnName(string $name, string $requestedLanguage): string
     {
-        $name = $colName;
-        $name = $this->removeClassificationStorePrefixes($name);
-        $name = $this->translate($name, $requestedLanguage);
-        $name = trim($name);
-        if (!$name) {
-            $name = $colName;
-        }
+        $name = $this->removeClassificationStorePrefixes($name) ?: $name;
+        $name = trim($this->translate($name, $requestedLanguage)) ?: $name;
         $name = $this->addPrefix($name);
 
         return $name;
