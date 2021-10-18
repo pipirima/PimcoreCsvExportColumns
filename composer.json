@@ -19,7 +19,7 @@
     }
   ],
   "require": {
-    "pimcore/pimcore": "^6"
+    "pimcore/pimcore": "^6|^10"
   },
   "autoload": {
     "psr-4": {
