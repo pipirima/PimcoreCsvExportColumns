@@ -4,7 +4,7 @@ namespace Pipirima\PimcoreCsvExportColumnsBundle\EventListener;
 
 use Pimcore\Event\Model\DataObjectEvent;
 use Pimcore\Event\Model\ElementEventInterface;
-use Pimcore\Model\Translation\Admin as TranslationAdmin;
+use Pimcore\Model\Translation;
 use Pimcore\Model\WebsiteSetting;
 
 /**
@@ -94,7 +94,7 @@ class CsvExportListener
     {
         $translated = $key;
         try {
-            $translation = TranslationAdmin::getByKey($key, false, true);
+            $translation = Translation::getByKey($key, Translation::DOMAIN_ADMIN, false, true);
             if ($translation) {
                 $translated = strval($translation->getTranslation($lang));
             }
